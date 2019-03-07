@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SpecFlow" Version="3.0.169-beta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\APILayer.Client\APILayer.Client.csproj" />
+  </ItemGroup>
+
+</Project>
