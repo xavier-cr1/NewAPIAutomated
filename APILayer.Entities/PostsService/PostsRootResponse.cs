@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using APILayer.Entities.Commom;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
 namespace APILayer.Entities.PostsService
 {
-    public class PostsRootResponse
+    public class PostsRootResponse : BaseResponse
     {
         [JsonProperty("items")]
         public ObservableCollection<PostsItem> Item { get; set; }

@@ -6,7 +6,7 @@ namespace APILayer.Entities
     public class PostsItem
     {
         [JsonProperty("owner")]
-        public PostOwner Owner { get; set; }
+        public PostsOwner Owner { get; set; }
 
         [JsonProperty("score")]
         public int Score { get; set; }

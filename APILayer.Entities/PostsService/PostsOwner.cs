@@ -2,7 +2,7 @@
 
 namespace APILayer.Entities.PostsService
 {
-    public class PostOwner
+    public class PostsOwner
     {
         [JsonProperty("reputation")]
         public int Reputation { get; set; }
