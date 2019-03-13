@@ -1,6 +1,7 @@
 ﻿using APILayer.Client.Base;
 using APILayer.Client.Contracts;
 using APILayer.Entities.PostsService;
+using BoDi;
 using FluentAssertions;
 using System;
 using System.Threading.Tasks;
@@ -17,19 +18,19 @@ namespace UserStories.AcceptanceTests.Steps.API.PostsService
         private PostsRequest postsRequest;
         private PostsRootResponse postsRootResponse;
 
-        public PostsServiceSteps(IPostsServiceRestApi postsServiceRestApi)
+        public PostsServiceSteps(IPostsServiceRestApi postsServiceRestApi) 
         {
             this.postsServiceRestApi = postsServiceRestApi;
         }
 
         [Given(@"The user gets a list of posts with the following properties")]
-        public async Task GivenTheUserGetsAListOfPostsWithTheFollowingProperties(Table table)
+        public void GivenTheUserGetsAListOfPostsWithTheFollowingProperties(Table table)
         {
             this.postsRequest = table.CreateInstance<PostsRequest>();
-            this.postsRootResponse = await this.postsServiceRestApi.PostsServiceGetAsync(postsRequest);
+            this.postsRootResponse = this.postsServiceRestApi.PostsServiceGetAsyncFromGzip(postsRequest);
         }
         
-        [Given(@"The response code of the posts service is '(.*)'")]
+        [Given(@"The status code of the posts service is '(.*)'")]
         public void GivenTheResponseCodeOfThePostsServiceIs(string statusCode)
         {
             var realCode = this.postsRootResponse.StatusCode;

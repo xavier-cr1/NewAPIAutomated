@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.6.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="SpecFlow" Version="3.0.169-beta" />
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.0.169-beta" />
@@ -18,6 +19,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrossLayer.Containers\CrossLayer.Containers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appSettings.Production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appSettings.Test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

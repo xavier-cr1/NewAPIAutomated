@@ -8,6 +8,10 @@ namespace APILayer.Client.Contracts
 {
     public interface IPostsServiceRestApi
     {
-        Task<PostsRootResponse> PostsServiceGetAsync(PostsRequest postsRequest);
+        Task<PostsRootResponse> PostsServiceGetAsyncGeneric(PostsRequest postsRequest);
+
+        Task<string> PostsServiceGetAsync(PostsRequest postsRequest);
+
+        PostsRootResponse PostsServiceGetAsyncFromGzip(PostsRequest postsRequest);
     }
 }

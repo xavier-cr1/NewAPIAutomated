@@ -80,12 +80,19 @@ namespace UserStories.AcceptanceTests.Features.API.PostsService
         [Xunit.TheoryAttribute(DisplayName="The first post given by votes and between dates has expected id and owner")]
         [Xunit.TraitAttribute("FeatureTitle", "PostsService")]
         [Xunit.TraitAttribute("Description", "The first post given by votes and between dates has expected id and owner")]
-        [Xunit.InlineDataAttribute("04-03-2019", "05-03-2019", "desc", "votes", "54992348", "1048572", new string[0])]
-        [Xunit.InlineDataAttribute("01-03-2019", "02-03-2019", "desc", "votes", "54946537", "1602555", new string[0])]
+        [Xunit.TraitAttribute("Category", "Type:API")]
+        [Xunit.InlineDataAttribute("2019-03-04", "2019-03-05", "desc", "votes", "54992348", "1048572", new string[0])]
+        [Xunit.InlineDataAttribute("2019-03-01", "2019-03-02", "desc", "votes", "54946537", "1602555", new string[0])]
         public virtual void TheFirstPostGivenByVotesAndBetweenDatesHasExpectedIdAndOwner(string fromDate, string toDate, string order, string sort, string post_Id, string user_Id, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The first post given by votes and between dates has expected id and owner", null, exampleTags);
-#line 6
+            string[] @__tags = new string[] {
+                    "Type:API"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The first post given by votes and between dates has expected id and owner", null, @__tags);
+#line 7
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -99,11 +106,11 @@ this.ScenarioInitialize(scenarioInfo);
                         string.Format("{0}", toDate),
                         string.Format("{0}", order),
                         string.Format("{0}", sort)});
-#line 7
+#line 8
     testRunner.Given("The user gets a list of posts with the following properties", ((string)(null)), table1, "Given ");
-#line 10
-    testRunner.And("The response code of the posts service is \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
+    testRunner.And("The status code of the posts service is \'OK\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
     testRunner.Then(string.Format("The first post given has the id \'{0}\' and the owner \'<userd_id>\'", post_Id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -112,11 +119,18 @@ this.ScenarioInitialize(scenarioInfo);
         [Xunit.TheoryAttribute(DisplayName="Get posts with wrong parameter")]
         [Xunit.TraitAttribute("FeatureTitle", "PostsService")]
         [Xunit.TraitAttribute("Description", "Get posts with wrong parameter")]
-        [Xunit.InlineDataAttribute("aaaa", "05-03-2019", "desc", "votes", new string[0])]
+        [Xunit.TraitAttribute("Category", "Type:API")]
+        [Xunit.InlineDataAttribute("aaaa", "2019-03-05", "desc", "votes", new string[0])]
         public virtual void GetPostsWithWrongParameter(string fromDate, string toDate, string order, string sort, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get posts with wrong parameter", null, exampleTags);
-#line 18
+            string[] @__tags = new string[] {
+                    "Type:API"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get posts with wrong parameter", null, @__tags);
+#line 20
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -130,10 +144,10 @@ this.ScenarioInitialize(scenarioInfo);
                         string.Format("{0}", toDate),
                         string.Format("{0}", order),
                         string.Format("{0}", sort)});
-#line 19
+#line 21
     testRunner.Given("The user gets a list of posts with the following properties", ((string)(null)), table2, "Given ");
-#line 22
-    testRunner.And("The response code of the posts service is \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 24
+    testRunner.And("The status code of the posts service is \'Bad Request\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

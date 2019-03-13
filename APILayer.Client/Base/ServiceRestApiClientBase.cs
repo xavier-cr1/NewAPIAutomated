@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -21,38 +22,53 @@ namespace APILayer.Client.Base
 
         protected readonly string orderBaseAttr = "order=";
 
-        protected readonly string sort = "sort=";
+        protected readonly string Sort = "sort=";
 
-        protected readonly string activity = "site=stackoverflow";
+        protected readonly string Activity = "site=stackoverflow";
         
         //medias
         protected readonly string JsonMediaType = "application/json";
 
         //config
-        protected readonly IConfigurationRoot configurationRoot;
+        protected readonly IConfigurationRoot ConfigurationRoot;
 
         //Inject configuration json file into rest service base
         public ServiceRestApiClientBase(IConfigurationRoot configurationRoot)
         {
-            this.configurationRoot = configurationRoot;
+            this.ConfigurationRoot = configurationRoot;
         }
 
         protected string GetBaseUrlRequest(string baseEnvironmentUrl, BaseRequest baseRequest)
         {
-            return $"{baseEnvironmentUrl}?{this.fromDateBaseAttr}{baseRequest.FromDate}&{this.toDateBaseAttr}{baseRequest.ToDate}&" +
-                $"{this.orderBaseAttr}{baseRequest.Order}&{this.sort}{baseRequest.Sort}&{this.activity}";
+            try
+            {
+                var fromDate = DateTime.ParseExact(baseRequest.FromDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                var fromDateUnix = ((DateTimeOffset)fromDate).ToUnixTimeSeconds();
+
+                var toDate = DateTime.ParseExact(baseRequest.ToDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                var toDateUnix = ((DateTimeOffset)fromDate).ToUnixTimeSeconds();
+
+
+                return $"{baseEnvironmentUrl}?{this.fromDateBaseAttr}{fromDateUnix}&{this.toDateBaseAttr}{toDateUnix}&" +
+                    $"{this.orderBaseAttr}{baseRequest.Order}&{this.Sort}{baseRequest.Sort}&{this.Activity}";
+            }
+            catch
+            {
+                return $"{baseEnvironmentUrl}?{this.fromDateBaseAttr}{baseRequest.FromDate}&{this.toDateBaseAttr}{baseRequest.ToDate}&" +
+                    $"{this.orderBaseAttr}{baseRequest.Order}&{this.Sort}{baseRequest.Sort}&{this.Activity}";
+            }
         }
 
         protected async Task<T> CreateGenericResponse<T>(HttpResponseMessage response) where T : class
         {
             var headers = this.CreateHeadersDictionary(response);
             var status = ((int)response.StatusCode).ToString();
-            var responseData = await this.CreateResponseData(response, status, headers);
+            var responseData = await this.CreateResponseData(response, status);
 
             return JsonConvert.DeserializeObject<T>(responseData);
         }
 
-        private async Task<string> CreateResponseData(HttpResponseMessage response, string status, IDictionary<string, IEnumerable<string>> headers)
+        private async Task<string> CreateResponseData(HttpResponseMessage response, string status)
         {
             var responseData = string.Empty;
 
