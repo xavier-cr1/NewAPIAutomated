@@ -16,7 +16,7 @@ namespace APILayer.Client.Base
     public class ServiceRestApiClientBase
     {
         //base attr
-        protected readonly string fromDateBaseAttr = "todate=";
+        protected readonly string fromDateBaseAttr = "fromdate=";
 
         protected readonly string toDateBaseAttr = "todate=";
 
@@ -43,10 +43,10 @@ namespace APILayer.Client.Base
             try
             {
                 var fromDate = DateTime.ParseExact(baseRequest.FromDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                var fromDateUnix = ((DateTimeOffset)fromDate).ToUnixTimeSeconds();
+                var fromDateUnix = ((DateTimeOffset)fromDate.AddHours(1)).ToUnixTimeSeconds();
 
                 var toDate = DateTime.ParseExact(baseRequest.ToDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                var toDateUnix = ((DateTimeOffset)fromDate).ToUnixTimeSeconds();
+                var toDateUnix = ((DateTimeOffset)toDate.AddHours(1)).ToUnixTimeSeconds();
 
 
                 return $"{baseEnvironmentUrl}?{this.fromDateBaseAttr}{fromDateUnix}&{this.toDateBaseAttr}{toDateUnix}&" +

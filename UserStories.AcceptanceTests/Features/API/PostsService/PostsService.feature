@@ -9,7 +9,7 @@ Scenario Outline: The first post given by votes and between dates has expected i
         | FromDate   | ToDate   | Order   | Sort   |
         | <fromDate> | <toDate> | <order> | <sort> |
     And The status code of the posts service is 'OK'
-    Then The first post given has the id '<post_id>' and the owner '<userd_id>'
+    Then The first post given has the id '<post_id>' and the owner '<user_id>'
 
     Examples: 
         | fromDate   | toDate     | order | sort  | post_id  | user_id |

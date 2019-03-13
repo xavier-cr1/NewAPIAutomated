@@ -111,7 +111,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
     testRunner.And("The status code of the posts service is \'OK\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
-    testRunner.Then(string.Format("The first post given has the id \'{0}\' and the owner \'<userd_id>\'", post_Id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then(string.Format("The first post given has the id \'{0}\' and the owner \'{1}\'", post_Id, user_Id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -1,9 +1,12 @@
 ﻿using APILayer.Client.Base;
 using APILayer.Client.Contracts;
+using APILayer.Entities;
 using APILayer.Entities.PostsService;
 using BoDi;
 using FluentAssertions;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -40,6 +43,14 @@ namespace UserStories.AcceptanceTests.Steps.API.PostsService
         [Then(@"The first post given has the id '(.*)' and the owner '(.*)'")]
         public void ThenTheFirstPostGivenHasTheIdAndTheOwner(string post_id, string user_id)
         {
+            var ts = this.postsRootResponse;
+            var realPostsService = (IEnumerable<PostsItem>)this.postsRootResponse.Item;
+
+            var realfirstPost = realPostsService.ToList().First();
+            realfirstPost.PostId.Should().Be(int.Parse(post_id));
+
+            var realOwnerFirstPost = realfirstPost.Owner;
+            realOwnerFirstPost.UserId.Should().Be(int.Parse(user_id));
         }
     }
 }

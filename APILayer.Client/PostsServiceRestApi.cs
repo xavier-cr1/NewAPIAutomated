@@ -25,6 +25,7 @@ namespace APILayer.Client
         {
         }
 
+        //Doesn't work -> Http response automatic decompression?
         public async Task<PostsRootResponse> PostsServiceGetAsyncGeneric(PostsRequest postsRequest)
         {
             try
