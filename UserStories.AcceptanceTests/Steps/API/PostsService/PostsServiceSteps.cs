@@ -1,15 +1,12 @@
-﻿using APILayer.Client.Base;
-using APILayer.Client.Contracts;
+﻿using APILayer.Client.Contracts;
 using APILayer.Entities;
 using APILayer.Entities.PostsService;
-using BoDi;
 using FluentAssertions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using Xunit.Abstractions;
 
 namespace UserStories.AcceptanceTests.Steps.API.PostsService
 {
@@ -17,13 +14,15 @@ namespace UserStories.AcceptanceTests.Steps.API.PostsService
     public class PostsServiceSteps : StepsBase
     {
         private readonly IPostsServiceRestApi postsServiceRestApi;
-        
+        private readonly ITestOutputHelper output;
+
         private PostsRequest postsRequest;
         private PostsRootResponse postsRootResponse;
 
-        public PostsServiceSteps(IPostsServiceRestApi postsServiceRestApi) 
+        public PostsServiceSteps(IPostsServiceRestApi postsServiceRestApi, ITestOutputHelper output) 
         {
             this.postsServiceRestApi = postsServiceRestApi;
+            this.output = output;
         }
 
         [Given(@"The user gets a list of posts with the following properties")]
