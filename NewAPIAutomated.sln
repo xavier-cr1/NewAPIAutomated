@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APILayer.Client", "APILayer
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Cross Layer", "3 - Cross Layer", "{43961EFD-2DD8-4DBE-AFDC-20D6BBFE24DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossLayer.Containers", "CrossLayer.Containers\CrossLayer.Containers.csproj", "{F1702B76-793C-47D8-B17E-97146854B6B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossLayer.Containers", "CrossLayer.Containers\CrossLayer.Containers.csproj", "{F1702B76-793C-47D8-B17E-97146854B6B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - CI configs", "4 - CI configs", "{9143B37A-5A3E-40B5-A7D0-08FC4B2D1737}"
+	ProjectSection(SolutionItems) = preProject
+		azure.net-core.yml = azure.net-core.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
