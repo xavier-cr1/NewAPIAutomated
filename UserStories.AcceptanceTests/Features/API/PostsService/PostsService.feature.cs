@@ -116,12 +116,12 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.TheoryAttribute(DisplayName="Get posts with wrong parameter")]
+        [Xunit.TheoryAttribute(DisplayName="Get posts with wrong parameter returns bad request")]
         [Xunit.TraitAttribute("FeatureTitle", "PostsService")]
-        [Xunit.TraitAttribute("Description", "Get posts with wrong parameter")]
+        [Xunit.TraitAttribute("Description", "Get posts with wrong parameter returns bad request")]
         [Xunit.TraitAttribute("Category", "Type:API")]
         [Xunit.InlineDataAttribute("aaaa", "2019-03-05", "desc", "votes", new string[0])]
-        public virtual void GetPostsWithWrongParameter(string fromDate, string toDate, string order, string sort, string[] exampleTags)
+        public virtual void GetPostsWithWrongParameterReturnsBadRequest(string fromDate, string toDate, string order, string sort, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Type:API"};
@@ -129,7 +129,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get posts with wrong parameter", null, @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get posts with wrong parameter returns bad request", null, @__tags);
 #line 20
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();

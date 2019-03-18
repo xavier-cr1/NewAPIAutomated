@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace APILayer.Entities.PostsService
 {
-    public class PostsRootResponse : BaseResponse
+    public class RootResponse : ICode
     {
         [JsonProperty("items")]
         public ObservableCollection<PostsItem> Item { get; set; }
@@ -17,5 +17,7 @@ namespace APILayer.Entities.PostsService
 
         [JsonProperty("quota_remaining")]
         public int QuotaRemaining { get; set; }
+
+        public string StatusCode { get; set; }
     }
 }

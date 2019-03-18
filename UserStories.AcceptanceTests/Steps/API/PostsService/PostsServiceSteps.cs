@@ -14,22 +14,20 @@ namespace UserStories.AcceptanceTests.Steps.API.PostsService
     public class PostsServiceSteps : StepsBase
     {
         private readonly IPostsServiceRestApi postsServiceRestApi;
-        private readonly ITestOutputHelper output;
 
         private PostsRequest postsRequest;
-        private PostsRootResponse postsRootResponse;
+        private RootResponse postsRootResponse;
 
-        public PostsServiceSteps(IPostsServiceRestApi postsServiceRestApi, ITestOutputHelper output) 
+        public PostsServiceSteps(IPostsServiceRestApi postsServiceRestApi) 
         {
             this.postsServiceRestApi = postsServiceRestApi;
-            this.output = output;
         }
 
         [Given(@"The user gets a list of posts with the following properties")]
         public void GivenTheUserGetsAListOfPostsWithTheFollowingProperties(Table table)
         {
             this.postsRequest = table.CreateInstance<PostsRequest>();
-            this.postsRootResponse = this.postsServiceRestApi.PostsServiceGetAsyncFromGzip(postsRequest);
+            this.postsRootResponse = this.postsServiceRestApi.PostsServiceGetFromGzip(postsRequest);
         }
         
         [Given(@"The status code of the posts service is '(.*)'")]
@@ -42,7 +40,6 @@ namespace UserStories.AcceptanceTests.Steps.API.PostsService
         [Then(@"The first post given has the id '(.*)' and the owner '(.*)'")]
         public void ThenTheFirstPostGivenHasTheIdAndTheOwner(string post_id, string user_id)
         {
-            var ts = this.postsRootResponse;
             var realPostsService = (IEnumerable<PostsItem>)this.postsRootResponse.Item;
 
             var realfirstPost = realPostsService.ToList().First();

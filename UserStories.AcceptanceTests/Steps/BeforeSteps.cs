@@ -23,19 +23,19 @@ namespace UserStories.AcceptanceTests.Steps
 
             // Inject app containers.
             this.RegisterAppContainerToObjectContainer();
-
             this.appContainers = this.objectContainer.Resolve<IAppContainer>();
-            //this.appContainers.RegisterAPIs(this.objectContainer);
 
             // Inject configuration to object container
             this.RegisterConfigurationToObjectContainer();
         }
 
+        /// <summary>
+        /// Sets up API scenarios. Triggers appcontainers
+        /// </summary>
         [BeforeScenario]
         [Scope(Tag = "Type:API")]
         public void SetUpAPIScenarios()
         {
-            //register API interfaces in a beforeScenario, this will trigger the constructor
             this.appContainers.RegisterAPIs(this.objectContainer);
         }
 

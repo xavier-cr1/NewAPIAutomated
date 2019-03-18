@@ -26,7 +26,7 @@ namespace APILayer.Client
         }
 
         //Doesn't work -> Http response automatic decompression?
-        public async Task<PostsRootResponse> PostsServiceGetAsyncGeneric(PostsRequest postsRequest)
+        public async Task<RootResponse> PostsServiceGetAsyncGeneric(PostsRequest postsRequest)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace APILayer.Client
                     // Response
                     var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None).ConfigureAwait(false);
 
-                    return await this.CreateGenericResponse<PostsRootResponse>(response);
+                    return await this.CreateGenericResponse<RootResponse>(response);
                 }
             }
 
@@ -80,7 +80,7 @@ namespace APILayer.Client
         }
 
         //webresponse object -> Api Content, revelated a gzip encryption
-        public PostsRootResponse PostsServiceGetAsyncFromGzip(PostsRequest postsRequest)
+        public RootResponse PostsServiceGetFromGzip(PostsRequest postsRequest)
         {
             string postsRootResponse = "";
             var url = GetBaseUrlRequest(this.postsService, postsRequest);
@@ -99,7 +99,7 @@ namespace APILayer.Client
                         postsRootResponse = reader.ReadToEnd();
                     }
 
-                    var jsonPostsRoot = JsonConvert.DeserializeObject<PostsRootResponse>(postsRootResponse);
+                    var jsonPostsRoot = JsonConvert.DeserializeObject<RootResponse>(postsRootResponse);
                     jsonPostsRoot.StatusCode = response.StatusCode.ToString();
                     return jsonPostsRoot;
                 }
@@ -108,7 +108,7 @@ namespace APILayer.Client
             catch(WebException webEx)
             {
                 var responseErr = (HttpWebResponse)webEx.Response;
-                return new PostsRootResponse { StatusCode = responseErr.StatusDescription };
+                return new RootResponse { StatusCode = responseErr.StatusDescription };
             }
             catch(Exception ex)
             {
