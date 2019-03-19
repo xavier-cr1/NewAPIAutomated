@@ -1,5 +1,6 @@
 ﻿using APILayer.Client.Base;
 using APILayer.Client.Contracts;
+using APILayer.Entities;
 using APILayer.Entities.PostsService;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -26,34 +27,34 @@ namespace APILayer.Client
         }
 
         //Doesn't work -> Http response automatic decompression?
-        public async Task<RootResponse> PostsServiceGetAsyncGeneric(PostsRequest postsRequest)
-        {
-            try
-            {
-                // Build url
-                var url = GetBaseUrlRequest(this.postsService, postsRequest);
+        //public async Task<RootResponse> PostsServiceGetAsyncGeneric(PostsRequest postsRequest)
+        //{
+        //    try
+        //    {
+        //        // Build url
+        //        var url = GetBaseUrlRequest(this.postsService, postsRequest);
 
-                using (var client = new HttpClient())
-                using (var request = new HttpRequestMessage())
-                {
-                    // Create request
-                    request.Method = new HttpMethod("GET");
-                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(this.JsonMediaType));
+        //        using (var client = new HttpClient())
+        //        using (var request = new HttpRequestMessage())
+        //        {
+        //            // Create request
+        //            request.Method = new HttpMethod("GET");
+        //            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(this.JsonMediaType));
 
-                    request.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
+        //            request.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
 
-                    // Response
-                    var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None).ConfigureAwait(false);
+        //            // Response
+        //            var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None).ConfigureAwait(false);
 
-                    return await this.CreateGenericResponse<RootResponse>(response);
-                }
-            }
+        //            return await this.CreateGenericResponse<RootResponse>(response);
+        //        }
+        //    }
 
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message, ex);
-            }
-        }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message, ex);
+        //    }
+        //}
 
         //Doesn't work -> Http response automatic decompression?
         public async Task<string> PostsServiceGetAsync(PostsRequest postsRequest)
@@ -80,7 +81,7 @@ namespace APILayer.Client
         }
 
         //webresponse object -> Api Content, revelated a gzip encryption
-        public RootResponse PostsServiceGetFromGzip(PostsRequest postsRequest)
+        public RootResponse<PostsItem> PostsServiceGetFromGzip(PostsRequest postsRequest)
         {
             string postsRootResponse = "";
             var url = GetBaseUrlRequest(this.postsService, postsRequest);
@@ -99,7 +100,7 @@ namespace APILayer.Client
                         postsRootResponse = reader.ReadToEnd();
                     }
 
-                    var jsonPostsRoot = JsonConvert.DeserializeObject<RootResponse>(postsRootResponse);
+                    var jsonPostsRoot = JsonConvert.DeserializeObject<RootResponse<PostsItem>>(postsRootResponse);
                     jsonPostsRoot.StatusCode = response.StatusCode.ToString();
                     return jsonPostsRoot;
                 }
@@ -108,7 +109,7 @@ namespace APILayer.Client
             catch(WebException webEx)
             {
                 var responseErr = (HttpWebResponse)webEx.Response;
-                return new RootResponse { StatusCode = responseErr.StatusDescription };
+                return new RootResponse<PostsItem> { StatusCode = responseErr.StatusDescription };
             }
             catch(Exception ex)
             {

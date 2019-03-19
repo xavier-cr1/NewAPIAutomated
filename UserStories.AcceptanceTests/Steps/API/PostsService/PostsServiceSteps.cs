@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
-using Xunit.Abstractions;
 
 namespace UserStories.AcceptanceTests.Steps.API.PostsService
 {
@@ -16,7 +15,7 @@ namespace UserStories.AcceptanceTests.Steps.API.PostsService
         private readonly IPostsServiceRestApi postsServiceRestApi;
 
         private PostsRequest postsRequest;
-        private RootResponse postsRootResponse;
+        private RootResponse<PostsItem> postsRootResponse;
 
         public PostsServiceSteps(IPostsServiceRestApi postsServiceRestApi) 
         {

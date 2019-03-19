@@ -1,13 +1,11 @@
 ﻿using APILayer.Client.Contracts;
-using APILayer.Entities;
 using APILayer.Entities.PostsService;
 using APILayer.Entities.UsersService;
 using FluentAssertions;
-using System.Collections.Generic;
+using FluentAssertions.Execution;
 using System.Linq;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
-using Xunit.Abstractions;
 
 
 namespace UserStories.AcceptanceTests.Steps.API.UsersService
@@ -17,7 +15,7 @@ namespace UserStories.AcceptanceTests.Steps.API.UsersService
     {
         private readonly IUsersServiceRestApi usersServiceRestApi;
         private UsersRequest usersRequest;
-        private RootResponse usersRootResponse;
+        private RootResponse<UsersItem> usersRootResponse;
 
         public UsersServiceSteps(IUsersServiceRestApi usersServiceRestApi)
         {
@@ -41,6 +39,22 @@ namespace UserStories.AcceptanceTests.Steps.API.UsersService
         [Then(@"The amount of bronze badges are '(.*)', silver are '(.*)' and gold are '(.*)'")]
         public void ThenTheAmountOfBronzeBadgesAreSilverAreAndGoldAre(int expectedbBronzeCount, int expectedSilverCount, int expectedGoldCount)
         {
+            var userBadgeList = this.usersServiceRestApi.GetUserBadgeCount(this.usersRootResponse);
+
+            using (new AssertionScope())
+            {
+                userBadgeList.Sum(x => x.Bronze).Should().Be(expectedbBronzeCount);
+
+                userBadgeList.Sum(x => x.Silver).Should().Be(expectedSilverCount);
+
+                userBadgeList.Sum(x => x.Gold).Should().Be(expectedGoldCount);
+            }
+        }
+
+        [Then(@"The users response is empty")]
+        public void TheUsersResponseIsEmpty()
+        {
+            this.usersRootResponse.Item.Count.Should().Be(0);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using APILayer.Entities.BadgeService;
+using APILayer.Entities.PostsService;
 using Newtonsoft.Json;
 
 namespace APILayer.Entities.UsersService

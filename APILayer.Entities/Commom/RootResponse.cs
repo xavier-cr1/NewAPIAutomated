@@ -4,10 +4,10 @@ using System.Collections.ObjectModel;
 
 namespace APILayer.Entities.PostsService
 {
-    public class RootResponse : ICode
+    public class RootResponse<T> where T : class
     {
         [JsonProperty("items")]
-        public ObservableCollection<PostsItem> Item { get; set; }
+        public ObservableCollection<T> Item { get; set; }
 
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
