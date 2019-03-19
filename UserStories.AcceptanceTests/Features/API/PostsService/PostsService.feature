@@ -17,7 +17,7 @@ Scenario Outline: The first post given by votes and between dates has expected i
         | 2019-03-01 | 2019-03-02 | desc  | votes | 54946537 | 1602555 |
 
 @Type:API
-Scenario Outline: Get posts with wrong parameter
+Scenario Outline: Get posts with wrong parameter returns bad request
     Given The user gets a list of posts with the following properties
         | FromDate   | ToDate   | Order   | Sort   |
         | <fromDate> | <toDate> | <order> | <sort> |

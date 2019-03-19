@@ -1,6 +1,7 @@
 ﻿using System;
 using APILayer.Client;
 using APILayer.Client.Contracts;
+using APILayer.Client.Services;
 using BoDi;
 
 namespace CrossLayer.Containers
@@ -11,6 +12,7 @@ namespace CrossLayer.Containers
         {
             //Register API's
             objectContainer.RegisterTypeAs<PostsServiceRestApi, IPostsServiceRestApi>();
+            objectContainer.RegisterTypeAs<UsersServiceRestApi, IUsersServiceRestApi>();
         }
     }
 }
