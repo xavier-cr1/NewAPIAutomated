@@ -26,60 +26,6 @@ namespace APILayer.Client
         {
         }
 
-        //Doesn't work -> Http response automatic decompression?
-        //public async Task<RootResponse> PostsServiceGetAsyncGeneric(PostsRequest postsRequest)
-        //{
-        //    try
-        //    {
-        //        // Build url
-        //        var url = GetBaseUrlRequest(this.postsService, postsRequest);
-
-        //        using (var client = new HttpClient())
-        //        using (var request = new HttpRequestMessage())
-        //        {
-        //            // Create request
-        //            request.Method = new HttpMethod("GET");
-        //            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(this.JsonMediaType));
-
-        //            request.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
-
-        //            // Response
-        //            var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None).ConfigureAwait(false);
-
-        //            return await this.CreateGenericResponse<RootResponse>(response);
-        //        }
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message, ex);
-        //    }
-        //}
-
-        //Doesn't work -> Http response automatic decompression?
-        public async Task<string> PostsServiceGetAsync(PostsRequest postsRequest)
-        {
-            string postsRootResponse = "";
-            var url = GetBaseUrlRequest(this.postsService, postsRequest);
-
-            using (var client = new HttpClient())
-            {
-                HttpResponseMessage response = await client.GetAsync(url);
-                if (response.IsSuccessStatusCode)
-                {
-                    var gzipFileName = "C:\\Users\\x.casafont\\Desktop\\SafenedTest\\tesst.gz";
-                    var arrayByte = await response.Content.ReadAsByteArrayAsync();
-                    using (FileStream destinationFile = File.Create(gzipFileName))
-                    using (var zipStream = new GZipStream(destinationFile, CompressionMode.Compress))
-                    {
-                        zipStream.Write(arrayByte, 0, arrayByte.Length);
-                        zipStream.Close();
-                    }
-                }
-                return postsRootResponse;
-            }
-        }
-
         //webresponse object -> Api Content, revelated a gzip encryption
         public RootResponse<PostsItem> PostsServiceGetFromGzip(PostsRequest postsRequest)
         {
