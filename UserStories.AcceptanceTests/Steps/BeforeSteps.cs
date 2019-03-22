@@ -1,4 +1,5 @@
-﻿using BoDi;
+﻿using APILayer.Client.Authentication;
+using BoDi;
 using CrossLayer.Containers;
 using Microsoft.Extensions.Configuration;
 using System.IO;
@@ -32,6 +33,20 @@ namespace UserStories.AcceptanceTests.Steps
         public void SetUpAPIScenarios()
         {
             this.appContainers.RegisterAPIs(this.objectContainer);
+        }
+
+        /// <summary>
+        /// Sets up API with oauth authentication scenarios.
+        /// </summary>
+        [BeforeScenario]
+        [Scope(Tag = "Type:OAuthAPI")]
+        public void SetUpOauthAPIScenarios()
+        {
+            this.appContainers.RegisterAPIs(this.objectContainer);
+
+            // Register oauth token
+            var oauthToken = this.objectContainer.Resolve<IOAuthRestApi>().RequestOAuthToken();
+            this.objectContainer.RegisterInstanceAs(oauthToken);
         }
 
         [BeforeTestRun]

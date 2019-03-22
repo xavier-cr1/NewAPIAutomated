@@ -160,6 +160,41 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Xunit.FactAttribute(DisplayName="Check unread items in user\'s inbox with valid userId for given token")]
+        [Xunit.TraitAttribute("FeatureTitle", "UsersService")]
+        [Xunit.TraitAttribute("Description", "Check unread items in user\'s inbox with valid userId for given token")]
+        [Xunit.TraitAttribute("Category", "Type:OAuthAPI")]
+        public virtual void CheckUnreadItemsInUsersInboxWithValidUserIdForGivenToken()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check unread items in user\'s inbox with valid userId for given token", null, new string[] {
+                        "Type:OAuthAPI"});
+#line 31
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "userId"});
+            table5.AddRow(new string[] {
+                        "2445999"});
+#line 32
+     testRunner.Given("The user gets the unread inbox with the following properties", ((string)(null)), table5, "Given ");
+#line 35
+     testRunner.And("The status code of the users service is \'OK\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 36
+     testRunner.When("The user marks as read the \'first\' inbox message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "userId"});
+            table6.AddRow(new string[] {
+                        "2445999"});
+#line 37
+     testRunner.Then("The user gets the unread inbox with the following properties", ((string)(null)), table6, "Then ");
+#line 40
+     testRunner.And("The users checks the \'first\' inbox message is not in unread\'s lists", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

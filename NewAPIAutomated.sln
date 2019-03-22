@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - CI configs", "4 - CI co
 		azure.net-core.yml = azure.net-core.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossLayer.Models", "CrossLayer.Models\CrossLayer.Models.csproj", "{A78A1430-D679-46E0-8920-DBCCC0341932}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{F1702B76-793C-47D8-B17E-97146854B6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1702B76-793C-47D8-B17E-97146854B6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1702B76-793C-47D8-B17E-97146854B6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A78A1430-D679-46E0-8920-DBCCC0341932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A78A1430-D679-46E0-8920-DBCCC0341932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A78A1430-D679-46E0-8920-DBCCC0341932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A78A1430-D679-46E0-8920-DBCCC0341932}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{1FE896E0-4A19-4317-9D73-9B695279532F} = {5F01E31F-5A0C-4E50-BBDF-702E13526505}
 		{A04303CA-1AB1-4525-90B6-0A2C294C7675} = {5F01E31F-5A0C-4E50-BBDF-702E13526505}
 		{F1702B76-793C-47D8-B17E-97146854B6B5} = {43961EFD-2DD8-4DBE-AFDC-20D6BBFE24DB}
+		{A78A1430-D679-46E0-8920-DBCCC0341932} = {43961EFD-2DD8-4DBE-AFDC-20D6BBFE24DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FA55CAF-A467-4856-93D3-2A2EBEFF3771}

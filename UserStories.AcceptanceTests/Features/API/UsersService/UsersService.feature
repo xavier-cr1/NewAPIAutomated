@@ -26,3 +26,18 @@ Scenario Outline: Filtering with non existent username
     Examples: 
         | fromDate   | toDate     | order | sort       | inName             |
         | 2019-03-04 | 2019-03-05 | desc  | reputation | notexisting_InName |
+
+@Type:OAuthAPI
+Scenario: Check unread items in user's inbox with valid userId for given token
+     Given  The user gets the unread inbox with the following properties
+        | userId  |
+        | 2445999 |
+     And The status code of the users service is 'OK'
+     When The user marks as read the 'first' inbox message
+     Then The user gets the unread inbox with the following properties
+        | userId  |
+        | 2445999 |
+     And The users checks the 'first' inbox message is not in unread's lists
+
+
+

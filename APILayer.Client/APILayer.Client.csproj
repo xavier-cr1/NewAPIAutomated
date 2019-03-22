@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\APILayer.Entities\APILayer.Entities.csproj" />
+    <ProjectReference Include="..\CrossLayer.Models\CrossLayer.Models.csproj" />
   </ItemGroup>
 
 </Project>

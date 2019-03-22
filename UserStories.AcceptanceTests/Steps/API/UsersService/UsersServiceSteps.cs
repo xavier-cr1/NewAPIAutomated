@@ -36,6 +36,16 @@ namespace UserStories.AcceptanceTests.Steps.API.UsersService
             realCode.Should().Be(statusCode, $"Real code {realCode} --- Expected code {statusCode}");
         }
 
+        [Given(@"The user gets the unread inbox with the following properties")]
+        public void GivenTheUserGetsTheUnreadInboxWithTheFollowingProperties(Table table)
+        {
+        }
+
+        [When(@"The user marks as read the '(.*)' inbox message")]
+        public void WhenTheUserMarksAsReadTheInboxMessage(string p0)
+        {
+        }
+
         [Then(@"The amount of bronze badges are '(.*)', silver are '(.*)' and gold are '(.*)'")]
         public void ThenTheAmountOfBronzeBadgesAreSilverAreAndGoldAre(int expectedbBronzeCount, int expectedSilverCount, int expectedGoldCount)
         {
@@ -55,6 +65,16 @@ namespace UserStories.AcceptanceTests.Steps.API.UsersService
         public void TheUsersResponseIsEmpty()
         {
             this.usersRootResponse.Item.Count.Should().Be(0);
+        }
+
+        [Then(@"The user gets the unread inbox with the following properties")]
+        public void ThenTheUserGetsTheUnreadInboxWithTheFollowingProperties(Table table)
+        {
+        }
+
+        [Then(@"The users checks the '(.*)' inbox message is not in unread's lists")]
+        public void ThenTheUsersChecksTheInboxMessageIsNotInUnreadSLists(string p0)
+        {
         }
     }
 }

@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrossLayer.Containers\CrossLayer.Containers.csproj" />
+    <ProjectReference Include="..\CrossLayer.Models\CrossLayer.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
