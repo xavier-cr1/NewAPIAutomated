@@ -34,6 +34,16 @@ namespace UserStories.AcceptanceTests.Steps
             this.appContainers.RegisterAPIs(this.objectContainer);
         }
 
+        /// <summary>
+        /// Sets up Appium Android scenarios. Triggers appcontainers
+        /// </summary>
+        [BeforeScenario]
+        [Scope(Tag = "Type:AppiumAndroid")]
+        public void SetUpAppiumAndroidScenarios()
+        {
+
+        }
+
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
