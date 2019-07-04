@@ -1,10 +1,25 @@
-﻿using System;
+﻿using AppiumLayer.Factory.Android.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using TechTalk.SpecFlow;
 
 namespace UserStories.AcceptanceTests.Steps.Appium.Android_StackOverflow
 {
-    public class Android_StackOverflowSteps
+    [Binding]
+    public class Android_StackOverflowSteps : StepsBase
     {
+        private readonly ISearchPage searchPage;
+
+        public Android_StackOverflowSteps(ISearchPage searchPage)
+        {
+            this.searchPage = searchPage;
+        }
+
+        [Given(@"The user types the text value '(.*)' into search input")]
+        public void GivenTheUserTypesTheTextValueIntoSearchInput(string text)
+        {
+            this.searchPage.UseSearch(text);
+        }
     }
 }

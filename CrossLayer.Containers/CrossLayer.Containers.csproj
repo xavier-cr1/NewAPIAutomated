@@ -1,15 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SpecFlow" Version="3.0.169-beta" />
+    <PackageReference Include="SpecFlow" Version="3.0.225" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\APILayer.Client\APILayer.Client.csproj" />
+    <ProjectReference Include="..\AppiumLayer.Factory\AppiumLayer.Factory.csproj" />
   </ItemGroup>
 
 </Project>
