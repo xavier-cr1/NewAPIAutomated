@@ -1,4 +1,5 @@
-﻿using BoDi;
+﻿using AppiumLayer.Driver.Android;
+using BoDi;
 using CrossLayer.Containers;
 using Microsoft.Extensions.Configuration;
 using System.IO;
@@ -41,7 +42,9 @@ namespace UserStories.AcceptanceTests.Steps
         [Scope(Tag = "Type:AppiumAndroid")]
         public void SetUpAppiumAndroidScenarios()
         {
+            this.appContainers.RegisterAppiumAndroid(this.objectContainer);
 
+            this.objectContainer.Resolve<ISetpUp>().SetUpAppiumDriver();
         }
 
         [BeforeTestRun]

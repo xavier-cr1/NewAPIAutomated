@@ -89,7 +89,7 @@ namespace UserStories.AcceptanceTests.Features.Appium.Android_StackOverflow
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 8
-    testRunner.Given("The user gets a list of posts with the following properties", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("The user types the text value \'c#\' into search input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();
         }

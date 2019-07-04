@@ -6,5 +6,6 @@ namespace AppiumLayer.Factory.Android.Contracts
 {
     public interface ISearchPage
     {
+        void UseSearch(string text);
     }
 }

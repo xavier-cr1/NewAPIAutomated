@@ -2,6 +2,7 @@
 using APILayer.Client;
 using APILayer.Client.Contracts;
 using APILayer.Client.Services;
+using AppiumLayer.Driver.Android;
 using AppiumLayer.Factory.Android.Contracts;
 using AppiumLayer.Factory.Android.Pages;
 using BoDi;
@@ -20,6 +21,7 @@ namespace CrossLayer.Containers
         public void RegisterAppiumAndroid(IObjectContainer objectContainer)
         {
             //Register Appium contracts
+            objectContainer.RegisterTypeAs<AppiumAndroidDriverSetUp, ISetpUp>();
             objectContainer.RegisterTypeAs<SearchPage, ISearchPage>();
         }
     }

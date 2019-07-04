@@ -5,4 +5,4 @@
 
 @Type:AppiumAndroid
 Scenario: Key value in search is correctly presented
-    Given The user gets a list of posts with the following properties
+    Given The user types the text value 'c#' into search input
