@@ -4,5 +4,11 @@
     I want to be correctly responsed
 
 @Type:AppiumAndroid
-Scenario: Key value in search is correctly presented
-    Given The user types the text value 'c#' into search input
+Scenario Outline: Question tags of all entrances are equal to user typed value into search input
+    Given The user types the text value '<tag>' into search input
+    #need add find by in apk
+    Then All presented entrances have the tag '<tag>'
+
+     Examples:
+         | tag |
+         | c#  |

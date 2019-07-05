@@ -26,6 +26,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Features\API\UsersService\UsersService.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UsersService.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Appium\Android_StackOverflow\StackOverflowSearch.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StackOverflowSearch.feature</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="appSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -43,9 +56,11 @@
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\API\UsersService\UsersService.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UsersService.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\Appium\Android_StackOverflow\StackOverflowSearch.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>StackOverflowSearch.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
   </ItemGroup>
 

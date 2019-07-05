@@ -21,5 +21,12 @@ namespace UserStories.AcceptanceTests.Steps.Appium.Android_StackOverflow
         {
             this.searchPage.UseSearch(text);
         }
+
+        [Then(@"All presented entrances have the tag '(.*)'")]
+        public void ThenAllPresentedEntracesHaveTheTag(string tag)
+        {
+            this.searchPage.AllEntrancesContainsTheCorrectTag(tag);
+        }
+
     }
 }

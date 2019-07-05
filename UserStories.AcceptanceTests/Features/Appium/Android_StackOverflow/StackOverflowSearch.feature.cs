@@ -77,19 +77,27 @@ namespace UserStories.AcceptanceTests.Features.Appium.Android_StackOverflow
             this.ScenarioTearDown();
         }
         
-        [Xunit.FactAttribute(DisplayName="Key value in search is correctly presented")]
+        [Xunit.TheoryAttribute(DisplayName="Question tags of all entrances are equal to user typed value into search input")]
         [Xunit.TraitAttribute("FeatureTitle", "Appium android search")]
-        [Xunit.TraitAttribute("Description", "Key value in search is correctly presented")]
+        [Xunit.TraitAttribute("Description", "Question tags of all entrances are equal to user typed value into search input")]
         [Xunit.TraitAttribute("Category", "Type:AppiumAndroid")]
-        public virtual void KeyValueInSearchIsCorrectlyPresented()
+        [Xunit.InlineDataAttribute("c#", new string[0])]
+        public virtual void QuestionTagsOfAllEntrancesAreEqualToUserTypedValueIntoSearchInput(string tag, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Key value in search is correctly presented", null, new string[] {
-                        "Type:AppiumAndroid"});
+            string[] @__tags = new string[] {
+                    "Type:AppiumAndroid"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Question tags of all entrances are equal to user typed value into search input", null, @__tags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 8
-    testRunner.Given("The user types the text value \'c#\' into search input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given(string.Format("The user types the text value \'{0}\' into search input", tag), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 10
+    testRunner.Then(string.Format("All presented entrances have the tag \'{0}\'", tag), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

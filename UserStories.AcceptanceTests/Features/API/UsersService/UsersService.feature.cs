@@ -115,7 +115,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
     testRunner.And("The status code of the users service is \'OK\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
-    testRunner.Then("The amount of bronze badges are \'14\', silver are \'1\' and gold are \'0\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("The amount of bronze badges are \'18\', silver are \'9\' and gold are \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

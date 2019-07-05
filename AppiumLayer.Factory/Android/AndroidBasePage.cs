@@ -26,5 +26,14 @@ namespace AppiumLayer.Factory.Android
 
             return findElement;
         }
+
+        protected IList<IWebElement> WaitUntilFindElements(AppiumDriver<AndroidElement> androidDriver, By by, double waitSeconds = 3)
+        {
+            androidDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(waitSeconds);
+            var webDriverWait = new WebDriverWait(androidDriver, TimeSpan.FromSeconds(waitSeconds));
+            var findElements = webDriverWait.Until(x => x.FindElements(by));
+
+            return findElements;
+        }
     }
 }
