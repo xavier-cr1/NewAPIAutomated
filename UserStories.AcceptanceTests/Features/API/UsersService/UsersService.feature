@@ -9,7 +9,7 @@ Scenario Outline: Expected badges for users filtered by username coincidences at
         | FromDate   | ToDate   | Order   | Sort   | InName   |
         | <fromDate> | <toDate> | <order> | <sort> | <inName> |
     And The status code of the users service is 'OK'
-    Then The amount of bronze badges are '18', silver are '9' and gold are '2'
+    Then The amount of bronze badges are '22', silver are '9' and gold are '3'
 
     Examples: 
         | fromDate   | toDate     | order | sort       | inName        |
