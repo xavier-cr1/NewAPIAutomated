@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29009.5
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - User Stories", "1 - User Stories", "{73B52543-0145-47CD-B459-CA1ABB1CCA65}"
 EndProject
@@ -18,15 +18,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossLayer.Containers", "CrossLayer.Containers\CrossLayer.Containers.csproj", "{F1702B76-793C-47D8-B17E-97146854B6B5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - CI configs", "5 - CI configs", "{9143B37A-5A3E-40B5-A7D0-08FC4B2D1737}"
-	ProjectSection(SolutionItems) = preProject
-		azure.net-core.yml = azure.net-core.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Appium Layer", "3 - Appium Layer", "{E132F2C2-92C3-44C0-BDFB-627D3E80243E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppiumLayer.Factory", "AppiumLayer.Factory\AppiumLayer.Factory.csproj", "{9069E8BC-4515-48DB-93A5-F206772B324D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppiumLayer.Factory", "AppiumLayer.Factory\AppiumLayer.Factory.csproj", "{9069E8BC-4515-48DB-93A5-F206772B324D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppiumLayer.Driver", "AppiumLayer.Webdriver\AppiumLayer.Driver.csproj", "{E3559604-35F9-4731-B491-6F5A0109B819}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppiumLayer.Driver", "AppiumLayer.Webdriver\AppiumLayer.Driver.csproj", "{E3559604-35F9-4731-B491-6F5A0109B819}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
