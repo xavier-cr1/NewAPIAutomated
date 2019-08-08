@@ -27,7 +27,8 @@ namespace APILayer.Client
 
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(url);
+                var uri = new Uri(url, UriKind.Absolute);
+                var request = (HttpWebRequest)WebRequest.Create(uri);
 
                 //KEY to decompress /!\
                 request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;

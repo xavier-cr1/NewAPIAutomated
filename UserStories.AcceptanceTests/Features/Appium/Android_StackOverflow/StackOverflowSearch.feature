@@ -3,6 +3,7 @@
     As an user
     I want to be correctly responsed
 
+@ignore
 @Type:AppiumAndroid
 Scenario Outline: Question tags of all entrances are equal to user typed value into search input
     Given The user types the text value '<tag>' into search input
